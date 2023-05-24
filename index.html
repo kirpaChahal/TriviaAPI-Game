@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+
+	<title>Trivia Game</title>
+    <button onclick="hideSpinner()">Hide Spinner</button>
+    <button onclick="hideTrivia()">Hide Trivia</button>
+</head>
+<body class="flex">
+<!--- Spinner --->
+<!-- <div id="wholeSpinner">
+        <button id="spin">Spin</button>
+        <span class="arrow"></span>
+    <div class="container">
+        <div class="one">1</div>
+        <div class="two">History</div>
+        <div class="three">Video Games</div>
+        <div class="four">4</div>
+        <div class="five">5</div>
+        <div class="six">6</div>
+        <div class="seven">7</div>
+        <div class="eight">8</div>
+    </div>
+</div> -->
+
+<div id="wholeSpinner" class="wrapper">
+    <div class="container">
+      <canvas id="wheel"></canvas>
+      <!-- <button id="spin-btn">Spin</button> -->
+      <img src="curve-arrow.png"/>
+      <div class="spinIt">
+        <button id="spinnerBtn">SPIN</button>
+        </div>
+    </div>
+
+    <div class=finalval id="final-value">
+        <!-- NEW BUTTON!!!!!! -->
+      <p>Click On The Spin Button To Start</p>
+    </div>
+  </div>
+  <!-- Chart JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <!-- Chart JS Plugin for displaying text over chart -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+  <!-- Script -->
+
+
+<!--- Spinner End --->
+
+    <div id = wholeTrivia class="wrapper">
+        <div class="trivia-container">
+            <div class="trivia-head">
+                <h1 class="trivia-title">Kirpa's Trivia Game</h1>
+                <div class="trivia-score flex">
+                    <span id="correct-score"></span>/<span id="total-question"></span>
+                </div>
+            </div>
+
+            <div class="trivia-body">
+                <h2 class = "trivia-question" id="question">
+                    <!-- Am I coding this well? -->
+                    <br> <span class="category">Category Here</span>
+                </h2>
+                <ul class="trivia-options">
+                    <!-- <li>1. Yes, doing fantastic</li>
+                    <li>1. Yes, doing fantastic</li>
+                    <li>1. Yes, doing fantastic</li>
+                    <li>1. Yes, doing fantastic</li> -->
+                </ul>
+                <div id="result">
+                    <!-- result goes here -->
+                </div>
+            </div>
+
+            <div class = "trivia-foot">
+                <button type="button" id="check-answer">Check Answer</button>
+                <button type="button" id="play-again">Play Again!</button>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script src="spinwheel.js"></script>
+    <script src="triviaGame.js"></script>
+</body>
+</html>

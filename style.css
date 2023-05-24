@@ -1,0 +1,374 @@
+*{
+	box-sizing:border-box;
+}
+:root{
+    --light-purple-color: #553D67;
+    --white-color: #ffffff;
+    --light-color: #ffffff;
+    --dark-color: rgb(255, 255, 255);
+    --grey-color: #F64C72;
+    --transition: all 300ms ease-in-out;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* body{
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-color);
+    background: var(--grey-color);
+} */
+.wrapper{
+    background: #2F2FA2;
+    padding: 1.5rem 4rem 3rem 4rem;
+    width: 640px;
+    height: 720px;
+    border-top-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%), 0 1px 3px rgb(0 0 0 / 10%);
+}
+.trivia-title{
+    text-align: center;
+    font-size: 2rem;
+    color:rgb(255, 255, 255);
+    font-family: 'Gist';
+}
+.trivia-score{
+    text-align: right;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border: 5px solid var(--grey-color);
+    font-weight: bold;
+    width: 100px;
+    height: 50px;
+    margin: .5rem auto 1rem auto;
+    color: white;
+}
+.trivia-question{
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    color: white;
+}
+.trivia-question .category{
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: var(--light-purple-color);
+    color: var(--white-color);
+    padding: .2rem .4rem;
+    border-radius: .2rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+.trivia-options{
+    list-style-type: none;
+    margin: 1rem 0;
+}
+.trivia-options li{
+    border-radius: 0.5rem;
+    font-weight: 600;
+    margin: .7rem 0;
+    padding: .4rem 1.2rem;
+    cursor: pointer;
+    border: 3px solid var(--light-purple-color);
+    background-color: var(--light-purple-color);
+    color: var(--white-color);
+    box-shadow: 0 4px 0 0 #6c4298;
+    transition: var(--transition);
+}
+.trivia-options li:hover{
+    background-color: var(--grey-color);
+    color: var(--dark-color);
+    border-color: var(--grey-color);
+    box-shadow: 0 4px 0 0 #bbbbbb;
+}
+.trivia-options li:active{
+    transform: scale(0.97);
+}
+/* js related */
+.selected{
+    background-color: var(--grey-color)!important;
+    color: var(--dark-color)!important;
+    border-color: var(--grey-color)!important;
+    box-shadow: 0 4px 0 0 #bbbbbb!important;
+}
+.trivia-foot button{
+    border: none;
+    border-radius: 0.5rem;
+    outline: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .5rem 1rem;    
+    margin: 0 auto 0 auto;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: block;
+    background-color: var(--grey-color);
+    color: var(--dark-color);
+    letter-spacing: 2px;
+    transition: var(--transition);
+    box-shadow: 0 4px 0 0 #bbbbbb;
+}
+.trivia-foot button:hover{
+    background-color: #242582;
+    box-shadow: 0 4px 0 0 #a7a7a7;
+}
+.trivia-foot button:active{
+    transform: scale(0.95);
+}
+#play-again{
+    display: none;
+}
+#result{
+    padding: .7rem 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color:white;
+}
+#result i{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+    background-color: var(--light-purple-color);
+    color: var(--light-color);
+}
+/* @media(max-width: 678px){
+    .trivia-title{
+        font-size: 1.6rem;
+    }
+    .wrapper{
+        margin: 3rem 0;
+        width: 90%;
+        height: 90%;
+        padding: 1.5rem 1rem 3rem 1rem;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .trivia-foot button{
+        font-size: 1rem;
+    }
+} */
+
+/* Trivia Above, Spinner Below !!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+body{
+
+    background-color: #242582 ;
+}
+/* body{
+	margin:0;
+	padding:0;
+	background-color: #242582;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	height:100vh;
+	overflow:hidden;
+}
+
+.container{
+	width:500px;
+	height:500px;
+	background-color: #ccc;
+	border-radius:50%;
+	border:15px solid #553D67;
+	position: relative;
+	overflow: hidden;
+	transition: 5s;
+}
+
+.container div{
+	height:50%;
+	width:200px;
+	position: absolute;
+	clip-path: polygon(100% 0 , 50% 100% , 0 0 );
+	transform:translateX(-50%);
+	transform-origin:bottom;
+	text-align:center;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	font-size:20px;
+	font-weight:bold;
+	font-family:sans-serif;
+	color:#fff;
+	left:135px;
+}
+
+.container .one{
+	background-color: #3f51b5;
+	left:50%;
+}
+.container .two{
+	background-color: #ff9800;
+	transform: rotate(45deg);
+}
+.container .three{
+	background-color: #e91e63;
+	transform:rotate(90deg);
+}
+.container .four{
+	background-color: #4caf50;
+	transform: rotate(135deg);
+}
+.container .five{
+	background-color: #009688;
+	transform: rotate(180deg);
+}
+.container .six{
+	background-color: #795548;
+	transform: rotate(225deg);
+}
+.container .seven{
+	background-color: #9c27b0;
+	transform: rotate(270deg);
+}
+.container .eight{
+	background-color: #f44336;
+	transform: rotate(315deg);
+}
+*/
+.container img{
+    margin-top: -70px;
+}
+
+/*
+#spin{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	z-index:10;
+	background-color: #F64C72;
+	text-transform: uppercase;
+	border:8px solid #553D67;
+	font-weight:bold;
+	font-size:20px;
+	color:#ffffff;
+	width: 80px;
+	height:80px;
+	font-family: sans-serif;
+	border-radius:50%;
+	cursor: pointer;
+	outline:none;
+	letter-spacing: 1px;
+} */
+
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  } */
+  /* body {
+    height: 100vh;
+    background: linear-gradient(135deg, #c3a3f1, #6414e9);
+  } */
+  /* .wrapper {
+    width: 90%;
+    max-width: 34.37em;
+    max-height: 90vh;
+    background-color: #ffffff;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding: 3em;
+    border-radius: 1em;
+    box-shadow: 0 4em 5em rgba(27, 8, 53, 0.2);
+  } */
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  #wheel {
+    max-height: inherit;
+    width: inherit;
+    top: 0;
+    padding: 0;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  /* #spin-btn {
+    position: absolute;
+    
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    height: 26%;
+    width: 26%;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 0;
+    background: radial-gradient(#F64C72 50%, #553D67 85%);
+    color: #ffffff;
+    font-family: "Gist";
+    text-transform: uppercase;
+    font-size: 1.8em;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  } */
+  /* NEW SPIN BTN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+  .spinIt button{
+    border: none;
+    border-radius: 0.5rem;
+    outline: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .5rem 1rem;    
+    margin: 0 auto 0 auto;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: block;
+    background-color: var(--grey-color);
+    color: var(--dark-color);
+    letter-spacing: 2px;
+    transition: var(--transition);
+    box-shadow: 0 4px 0 0 #bbbbbb;
+    margin-top: 25px;
+  }
+  .spinIt button:hover{
+    background-color: #242582;
+    box-shadow: 0 4px 0 0 #a7a7a7;
+}
+.spinIt button:active{
+    transform: scale(0.95);
+}
+
+  img {
+    position: absolute;
+    width: 4em;
+    top: 45%;
+    right: -8%;
+  }
+  #final-value {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: -50px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+  /* @media screen and (max-width: 768px) {
+    .wrapper {
+      font-size: 12px;
+    }
+    img {
+      right: -5%;
+    }
+  } */
